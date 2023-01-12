@@ -1,0 +1,151 @@
+//QUESTION 1: Hello, object
+// importance: 5
+// Write the code, one line for each action:
+
+// Create an empty object user.
+// Add the property name with the value John.
+// Add the property surname with the value Smith.
+// Change the value of the name to Pete.
+// Remove the property name from the object.
+
+let object = {
+  name: "john",
+  surname: "Smith",
+};
+object.name = "pete";
+console.log(object["name"]);
+
+delete object.name;
+console.log(object);
+
+//---------------------------------------------------
+
+//QUESTION 2: Write the function isEmpty(obj) which returns true if the object has no properties, false otherwise.
+
+//pseudocode
+//function isEmpty()
+//input: obj
+//output: true if obj has no prop
+//else false
+
+function isEmpty(object) {
+  if (Object.keys(object).length === 0) {
+    return true;
+  }
+  return false;
+}
+
+console.log(isEmpty({}, "should return true"));
+console.log(isEmpty((object["8:30"] = "get up"), "should return false"));
+
+console.log(
+  isEmpty(
+    {
+      person1: "diana",
+      person2: "xochitl",
+      person3: "kim",
+      person4: "vlad",
+    },
+    "should return false"
+  )
+);
+
+//------------------------------------------------
+
+//QUESTION 3
+//Write the code to sum all salaries and store in the variable sum. Should be 390 in the example above.
+
+let salaries = {
+  John: 100,
+  Ann: 160,
+  Pete: 130,
+};
+
+//If salaries is empty, then the result must be 0.
+
+//pseudocode
+//function sumAll()
+//input salaries
+//iterate through for in loop? (inital though)
+//using for of since we're dealing w an obj
+
+function sumAll(obj) {
+  if (Object.keys(obj).length === 0) {
+    return 0;
+  }
+  let total = 0;
+
+  //Object.values(obj) returns an arr
+
+  for (let i of Object.values(obj)) {
+    total += i;
+  }
+  return total;
+}
+
+console.log(sumAll(salaries), "testtesttest");
+
+//---------------------------------------------
+//QUESTION 4: Create a function multiplyNumeric(obj) that multiplies all numeric property values of obj by 2.
+
+//For instance:
+
+// before the call
+let menu = {
+  width: 200,
+  height: 300,
+  title: "My menu",
+};
+
+// multiplyNumeric(menu);
+
+// after the call
+menu = {
+  width: 400,
+  height: 600,
+  title: "My menu",
+};
+
+//Please note that multiplyNumeric does not need to return anything. It should modify the object in-place.
+
+//P.S. Use typeof to check for a number here.
+
+//pseudocode
+//create function multiplyNumeric
+//input: obj
+//output: int multiplied by 2
+//iterate through object using for in loop
+//if typeof value === "number"
+//return value *= 2
+
+//Q for vlad:
+//because we already have value in the for in method, the computer is already aware what value is?
+//for in for obj
+//for of is for arr, string etc?
+
+function multiplyNumeric(obj) {
+  for (let value in obj) {
+    if (typeof value === "number") {
+      value *= 2;
+    }
+  }
+  return obj;
+}
+
+console.log(multiplyNumeric(menu));
+
+//-----------------------------------
+//q4: my attempt to solve it the first time
+
+// function multiplyNumeric(obj){
+//   //let valueMultiplied = 1 * value
+//   for(let i of (Object.values(obj))) {
+//     console.log(Object.values(obj));
+//   //   if(values === valueMultiplied) {
+//   //     valueMultiplied = value * 2;
+//   //   }
+//   // }
+//   return Object.values(obj)
+// }
+
+//console.log(multiplyNumeric(menu));
